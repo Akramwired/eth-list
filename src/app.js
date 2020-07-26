@@ -10,7 +10,7 @@ App = {
         await App.render()
     },
 
-      // https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
+  // https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
   loadWeb3: async () => {
     if (typeof web3 !== 'undefined') {
       App.web3Provider = web3.currentProvider
@@ -111,6 +111,14 @@ App = {
       // Show the task
       $newTaskTemplate.show()
     }
+  },
+
+
+  createTask: async () => {
+    App.setLoading(true)
+    const content = $('#newTask').val()
+    await App.todoList.createTask(content)
+    window.location.reload()
   },
 
 
